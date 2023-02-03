@@ -1,0 +1,1 @@
+docker image inspect mongo-express:latest
