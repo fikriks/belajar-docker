@@ -1,0 +1,34 @@
+version: '3.9'
+
+services:
+  mongodb:
+    image: mongo:latest
+    container_name: mongodb
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: fikri
+      MONGO_INITDB_ROOT_PASSWORD: fikri
+      MONGO_INITDB_DATABASE: admin
+    networks:
+      - network_example
+  
+  mongodb-express:
+    image: mongo-express:latest
+    container_name: mongodb-express
+    restart: always
+    ports:
+      - "8081:8081"
+    environment:
+      ME_CONFIG_MONGODB_ADMINUSERNAME: fikri
+      ME_CONFIG_MONGODB_ADMINPASSWORD: fikri
+      ME_CONFIG_MONGODB_SERVER: mongodb
+    networks:
+      - network_example
+    depends_on:
+      - mongodb
+
+networks:
+  network_example:
+    name: network_example
+    driver: bridge
