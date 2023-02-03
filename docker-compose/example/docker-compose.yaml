@@ -1,0 +1,9 @@
+version: '3.9'
+
+services:
+  nginx-web-server:
+    container_name: nginx-web-server
+    image: nginx:latest
+  nginx-web-server-2:
+    container_name: nginx-web-server-2
+    image: nginx:latest
