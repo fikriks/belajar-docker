@@ -1,0 +1,19 @@
+version: '3.9'
+
+services:
+  mongodb:
+    image: mongo:latest
+    container_name: mongodb
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: fikri
+      MONGO_INITDB_ROOT_PASSWORD: fikri
+      MONGO_INITDB_DATABASE: admin
+    networks:
+      - network_example
+
+networks:
+  network_example:
+    name: network_example
+    driver: bridge
